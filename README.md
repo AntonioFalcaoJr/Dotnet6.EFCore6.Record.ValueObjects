@@ -199,7 +199,11 @@ The relationship between parent and child entities may be required or optional. 
 
 ## Running
 
+The [`./docker-compose.yml`](./docker-compose.yml) provide the `WebAPI` and `MS SQL Server` applications:
 
+```bash
+docker-compose up -d
+``` 
 
 ## Built With
 

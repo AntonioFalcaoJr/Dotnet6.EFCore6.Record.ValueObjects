@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet6.EFCore6.Record.ValueObject.Repositories", "Dotnet6.EFCore6.Record.ValueObject.Repositories\Dotnet6.EFCore6.Record.ValueObject.Repositories.csproj", "{42F3CAE9-7991-46A3-82F9-7833A013BAD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet6.EFCore6.Record.ValueObject.Domain", "Dotnet6.EFCore6.Record.ValueObject.Domain\Dotnet6.EFCore6.Record.ValueObject.Domain.csproj", "{9D3318A2-3C9C-49D4-93DC-145A5CAE9D07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet6.EFCore6.Record.ValueObject.WebAPI", "Dotnet6.EFCore6.Record.ValueObject.WebAPI\Dotnet6.EFCore6.Record.ValueObject.WebAPI.csproj", "{8DF51334-C87C-4928-B3A7-0606AF3EE955}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42F3CAE9-7991-46A3-82F9-7833A013BAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42F3CAE9-7991-46A3-82F9-7833A013BAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42F3CAE9-7991-46A3-82F9-7833A013BAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42F3CAE9-7991-46A3-82F9-7833A013BAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D3318A2-3C9C-49D4-93DC-145A5CAE9D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3318A2-3C9C-49D4-93DC-145A5CAE9D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3318A2-3C9C-49D4-93DC-145A5CAE9D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3318A2-3C9C-49D4-93DC-145A5CAE9D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF51334-C87C-4928-B3A7-0606AF3EE955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF51334-C87C-4928-B3A7-0606AF3EE955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF51334-C87C-4928-B3A7-0606AF3EE955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF51334-C87C-4928-B3A7-0606AF3EE955}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

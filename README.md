@@ -1,6 +1,6 @@
 # Dotnet6.EFCore6.Record.ValueObjects
 
-This project aims to demonstrate the configuration and use of **Records** as **Value Objects** with **Entity Framework Core 6**.
+This project aims to demonstrate the configuration and use of **Records** as **Value Objects** with **EF Core 6**.
 
 ---
 

@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  mssql:
+    container_name: mssql
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - 1433:1433
+    environment:
+      SA_PASSWORD: "!MyStrongPassword"
+      ACCEPT_EULA: "Y"
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    networks:
+      - valueobjetcs
+
+  webapi:
+    container_name: webapi
+    image: webapi
+    build:
+      context: .
+      dockerfile: ./src/Dotnet6.EFCore6.Record.ValueObject.WebAPI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5000
+    ports:
+      - 5000:5000
+    depends_on:
+      mssql:
+        condition: service_healthy
+    networks:
+      - valueobjetcs
+
+networks:
+  valueobjetcs:
+    driver: bridge

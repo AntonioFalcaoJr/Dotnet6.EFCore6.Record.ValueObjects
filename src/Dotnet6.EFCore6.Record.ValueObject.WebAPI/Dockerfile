@@ -1,18 +1,34 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+﻿ARG ASPNET_VERSION="6.0.0-preview.4-alpine3.13"
+ARG SDK_VERSION="6.0.100-preview.4-alpine3.13"
+ARG BASE_ADRESS="mcr.microsoft.com/dotnet"
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM $BASE_ADRESS/aspnet:$ASPNET_VERSION AS base
+WORKDIR /app
+EXPOSE 5000
+
+#RUN apk add --no-cache icu-libs
+#ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+
+FROM $BASE_ADRESS/sdk:$SDK_VERSION AS build
 WORKDIR /src
-COPY ["Dotnet6.EFCore6.Record.ValueObject.WebAPI/Dotnet6.EFCore6.Record.ValueObject.WebAPI.csproj", "Dotnet6.EFCore6.Record.ValueObject.WebAPI/"]
-RUN dotnet restore "Dotnet6.EFCore6.Record.ValueObject.WebAPI/Dotnet6.EFCore6.Record.ValueObject.WebAPI.csproj"
-COPY . .
-WORKDIR "/src/Dotnet6.EFCore6.Record.ValueObject.WebAPI"
-RUN dotnet build "Dotnet6.EFCore6.Record.ValueObject.WebAPI.csproj" -c Release -o /app/build
+
+COPY ./src/Dotnet6.EFCore6.Record.ValueObject.Domain/*.csproj ./Dotnet6.EFCore6.Record.ValueObject.Domain/
+COPY ./src/Dotnet6.EFCore6.Record.ValueObject.Repositories/*.csproj ./Dotnet6.EFCore6.Record.ValueObject.Repositories/
+COPY ./src/Dotnet6.EFCore6.Record.ValueObject.WebAPI/*.csproj ./Dotnet6.EFCore6.Record.ValueObject.WebAPI/
+
+COPY ./NuGet.Config ./
+
+RUN dotnet restore ./Dotnet6.EFCore6.Record.ValueObject.WebAPI/
+
+COPY ./src/Dotnet6.EFCore6.Record.ValueObject.Domain/. ./Dotnet6.EFCore6.Record.ValueObject.Domain/
+COPY ./src/Dotnet6.EFCore6.Record.ValueObject.Repositories/. ./Dotnet6.EFCore6.Record.ValueObject.Repositories/
+COPY ./src/Dotnet6.EFCore6.Record.ValueObject.WebAPI/. ./Dotnet6.EFCore6.Record.ValueObject.WebAPI/
+
+WORKDIR /src/Dotnet6.EFCore6.Record.ValueObject.WebAPI
+RUN dotnet build -c Release --no-restore -o /app/build 
 
 FROM build AS publish
-RUN dotnet publish "Dotnet6.EFCore6.Record.ValueObject.WebAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish -c Release --no-restore -o /app/publish
 
 FROM base AS final
 WORKDIR /app

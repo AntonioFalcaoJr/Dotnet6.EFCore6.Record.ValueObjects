@@ -193,7 +193,7 @@ CREATE TABLE [Addresses]
 CREATE UNIQUE INDEX [IX_Addresses_PersonId] ON [Addresses] ([PersonId]);
 ```
 
-### Deleting orphans Value Objects with EF Core
+## Deleting orphans Value Objects with EF Core
 
 The relationship between parent and child entities may be required or optional. A required relationship means that the child cannot exist without a parent, and if the parent is deleted or the relationship between the child and the parent is severed, then the child becomes orphaned. In this case, EF Core will perform a automatically child deletion.
 

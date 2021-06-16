@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210616183857_First migration")]
+    [Migration("20210616211836_First migration")]
     partial class Firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,63 +44,63 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("00958d32-8a83-45c8-8300-9d1b8ea05afc"),
-                            Age = 76,
-                            Name = "Avery"
+                            Id = new Guid("5fb17362-5582-4784-a474-55f8674dcebb"),
+                            Age = 31,
+                            Name = "Mozelle"
                         },
                         new
                         {
-                            Id = new Guid("4f35bfdd-d49b-442d-971f-fdd0cf2e86ee"),
-                            Age = 60,
-                            Name = "Vida"
+                            Id = new Guid("7d6bfebd-7f3c-477a-930d-f384dbdb178c"),
+                            Age = 51,
+                            Name = "Hipolito"
                         },
                         new
                         {
-                            Id = new Guid("4a8b006c-2e55-4339-9a02-3bd38f3a9571"),
-                            Age = 23,
-                            Name = "Toby"
+                            Id = new Guid("99836a44-c19e-4121-b7a0-1df1335b25e5"),
+                            Age = 48,
+                            Name = "Filiberto"
                         },
                         new
                         {
-                            Id = new Guid("f3dfb700-c4ae-4239-a1d6-ffe8f2c2c47e"),
-                            Age = 43,
-                            Name = "Lilly"
+                            Id = new Guid("1e7e2bc7-8394-4892-bd26-0996974efe6f"),
+                            Age = 58,
+                            Name = "Carlee"
                         },
                         new
                         {
-                            Id = new Guid("835042ea-1bdc-439a-90f0-36f871b1890a"),
-                            Age = 37,
+                            Id = new Guid("4dc3c3ca-d991-4466-a423-982d2eecbe61"),
+                            Age = 52,
+                            Name = "Lindsay"
+                        },
+                        new
+                        {
+                            Id = new Guid("1c6eaa44-e44a-4396-a61d-465be5b3b807"),
+                            Age = 65,
+                            Name = "Shana"
+                        },
+                        new
+                        {
+                            Id = new Guid("4e6ef913-24c0-4af6-b7d5-9b20b2e2f2e1"),
+                            Age = 79,
                             Name = "Madisen"
                         },
                         new
                         {
-                            Id = new Guid("6e017e62-a84a-4c42-bb6b-af6ceaa3603c"),
+                            Id = new Guid("c08070ab-566f-42bd-a32d-dcf19b4f0ec1"),
+                            Age = 22,
+                            Name = "Danielle"
+                        },
+                        new
+                        {
+                            Id = new Guid("47cb5470-ad76-4193-91d2-89a8379ca482"),
                             Age = 34,
-                            Name = "Jane"
+                            Name = "Kelton"
                         },
                         new
                         {
-                            Id = new Guid("c2822b57-94bb-4c65-a85f-19508df6ade0"),
-                            Age = 18,
-                            Name = "Corrine"
-                        },
-                        new
-                        {
-                            Id = new Guid("21adaba7-0925-4b02-973b-40004d0b8958"),
-                            Age = 69,
-                            Name = "Margarette"
-                        },
-                        new
-                        {
-                            Id = new Guid("04226e8f-acf0-4eeb-b4d1-e53f4ee8063a"),
-                            Age = 62,
-                            Name = "German"
-                        },
-                        new
-                        {
-                            Id = new Guid("2d129e75-f6f4-4385-ba7e-077aeeb0cbb2"),
-                            Age = 43,
-                            Name = "Mortimer"
+                            Id = new Guid("362f9e3a-164c-4e75-a401-0bb90371f73e"),
+                            Age = 66,
+                            Name = "Emelia"
                         });
                 });
 
@@ -114,6 +114,12 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
 
                             b1.Property<Guid>("PersonId")
                                 .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("ZipCode")
+                                .IsRequired()
+                                .HasMaxLength(32)
+                                .IsUnicode(false)
+                                .HasColumnType("varchar(32)");
 
                             b1.HasKey("Id");
 
@@ -171,9 +177,9 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
 
                                                     b4.Property<string>("Initials")
                                                         .IsRequired()
-                                                        .HasMaxLength(10)
+                                                        .HasMaxLength(8)
                                                         .IsUnicode(false)
-                                                        .HasColumnType("varchar(10)");
+                                                        .HasColumnType("varchar(8)");
 
                                                     b4.Property<string>("Name")
                                                         .IsRequired()
@@ -195,9 +201,9 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
 
                                                             b5.Property<string>("Initials")
                                                                 .IsRequired()
-                                                                .HasMaxLength(10)
+                                                                .HasMaxLength(8)
                                                                 .IsUnicode(false)
-                                                                .HasColumnType("varchar(10)");
+                                                                .HasColumnType("varchar(8)");
 
                                                             b5.Property<string>("Name")
                                                                 .IsRequired()

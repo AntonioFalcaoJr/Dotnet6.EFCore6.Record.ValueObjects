@@ -26,12 +26,13 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Street_City_Name = table.Column<string>(type: "varchar(128)", unicode: false, maxLength: 128, nullable: true),
-                    Street_City_State_Country_Initials = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: true),
+                    Street_City_State_Country_Initials = table.Column<string>(type: "varchar(8)", unicode: false, maxLength: 8, nullable: true),
                     Street_City_State_Country_Name = table.Column<string>(type: "varchar(128)", unicode: false, maxLength: 128, nullable: true),
-                    Street_City_State_Initials = table.Column<string>(type: "varchar(10)", unicode: false, maxLength: 10, nullable: true),
+                    Street_City_State_Initials = table.Column<string>(type: "varchar(8)", unicode: false, maxLength: 8, nullable: true),
                     Street_City_State_Name = table.Column<string>(type: "varchar(128)", unicode: false, maxLength: 128, nullable: true),
                     Street_Name = table.Column<string>(type: "varchar(128)", unicode: false, maxLength: 128, nullable: true),
                     Street_Number = table.Column<int>(type: "int", nullable: true),
+                    ZipCode = table.Column<string>(type: "varchar(32)", unicode: false, maxLength: 32, nullable: false),
                     PersonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -50,16 +51,16 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Migrations
                 columns: new[] { "Id", "Age", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("00958d32-8a83-45c8-8300-9d1b8ea05afc"), 76, "Avery" },
-                    { new Guid("4f35bfdd-d49b-442d-971f-fdd0cf2e86ee"), 60, "Vida" },
-                    { new Guid("4a8b006c-2e55-4339-9a02-3bd38f3a9571"), 23, "Toby" },
-                    { new Guid("f3dfb700-c4ae-4239-a1d6-ffe8f2c2c47e"), 43, "Lilly" },
-                    { new Guid("835042ea-1bdc-439a-90f0-36f871b1890a"), 37, "Madisen" },
-                    { new Guid("6e017e62-a84a-4c42-bb6b-af6ceaa3603c"), 34, "Jane" },
-                    { new Guid("c2822b57-94bb-4c65-a85f-19508df6ade0"), 18, "Corrine" },
-                    { new Guid("21adaba7-0925-4b02-973b-40004d0b8958"), 69, "Margarette" },
-                    { new Guid("04226e8f-acf0-4eeb-b4d1-e53f4ee8063a"), 62, "German" },
-                    { new Guid("2d129e75-f6f4-4385-ba7e-077aeeb0cbb2"), 43, "Mortimer" }
+                    { new Guid("5fb17362-5582-4784-a474-55f8674dcebb"), 31, "Mozelle" },
+                    { new Guid("7d6bfebd-7f3c-477a-930d-f384dbdb178c"), 51, "Hipolito" },
+                    { new Guid("99836a44-c19e-4121-b7a0-1df1335b25e5"), 48, "Filiberto" },
+                    { new Guid("1e7e2bc7-8394-4892-bd26-0996974efe6f"), 58, "Carlee" },
+                    { new Guid("4dc3c3ca-d991-4466-a423-982d2eecbe61"), 52, "Lindsay" },
+                    { new Guid("1c6eaa44-e44a-4396-a61d-465be5b3b807"), 65, "Shana" },
+                    { new Guid("4e6ef913-24c0-4af6-b7d5-9b20b2e2f2e1"), 79, "Madisen" },
+                    { new Guid("c08070ab-566f-42bd-a32d-dcf19b4f0ec1"), 22, "Danielle" },
+                    { new Guid("47cb5470-ad76-4193-91d2-89a8379ca482"), 34, "Kelton" },
+                    { new Guid("362f9e3a-164c-4e75-a401-0bb90371f73e"), 66, "Emelia" }
                 });
 
             migrationBuilder.CreateIndex(

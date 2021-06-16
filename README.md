@@ -178,13 +178,13 @@ CREATE TABLE [Addresses]
 (
     [Id]                                 uniqueidentifier NOT NULL,
     [Street_City_Name]                   varchar(128)     NULL,
-    [Street_City_State_Country_Initials] varchar(10)      NULL,
+    [Street_City_State_Country_Initials] varchar(8)       NULL,
     [Street_City_State_Country_Name]     varchar(128)     NULL,
-    [Street_City_State_Initials]         varchar(10)      NULL,
+    [Street_City_State_Initials]         varchar(8)       NULL,
     [Street_City_State_Name]             varchar(128)     NULL,
     [Street_Name]                        varchar(128)     NULL,
     [Street_Number]                      int              NULL,
-    [ZipCode]                            nvarchar(max)    NULL,
+    [ZipCode]                            varchar(32)      NULL,
     [PersonId]                           uniqueidentifier NOT NULL,
     CONSTRAINT [PK_Addresses] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_Addresses_Persons_PersonId] FOREIGN KEY ([PersonId]) REFERENCES [Persons] ([Id]) ON DELETE CASCADE
@@ -196,6 +196,10 @@ CREATE UNIQUE INDEX [IX_Addresses_PersonId] ON [Addresses] ([PersonId]);
 ## Deleting orphans Value Objects with EF Core
 
 The relationship between parent and child entities may be required or optional. A required relationship means that the child cannot exist without a parent, and if the parent is deleted or the relationship between the child and the parent is severed, then the child becomes orphaned. In this case, EF Core will perform a automatically child deletion.
+
+## Running
+
+
 
 ## Built With
 

@@ -46,6 +46,12 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Configurations
                     // Sets the properties that make up the primary key for this owned entity type.
                     addressNavigationBuilder
                         .HasKey("Id"); // Shadow Key
+                    
+                    addressNavigationBuilder
+                        .Property(address => address.ZipCode)
+                        .HasMaxLength(32)
+                        .IsRequired()
+                        .IsUnicode(false);
 
                     // Configures a relationship where the Street is owned by (or part of) Addresses.
                     addressNavigationBuilder.OwnsOne(
@@ -80,7 +86,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Configurations
                                         {
                                             stateNavigationBuilder
                                                 .Property(country => country.Initials)
-                                                .HasMaxLength(10)
+                                                .HasMaxLength(8)
                                                 .IsRequired()
                                                 .IsUnicode(false);
 
@@ -97,7 +103,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Repositories.Configurations
                                                 {
                                                     countryNavigationBuilder
                                                         .Property(country => country.Initials)
-                                                        .HasMaxLength(10)
+                                                        .HasMaxLength(8)
                                                         .IsRequired()
                                                         .IsUnicode(false);
 

@@ -22,9 +22,9 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IUserRepository _repository;
+        private readonly IPersonRepository _repository;
 
-        public PersonsController(IUserRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
+        public PersonsController(IPersonRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
             => (_repository, _unitOfWork, _mapper) = (repository, unitOfWork, mapper);
 
         [HttpGet]

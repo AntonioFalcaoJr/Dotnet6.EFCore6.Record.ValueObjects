@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dotnet6.EFCore6.Record.ValueObject.Repositories
 {
-    public class UserRepository: Repository<Person, Guid>, IUserRepository
+    public class PersonRepository: Repository<Person, Guid>, IPersonRepository
     {
-        public UserRepository(DbContext dbDbContext) 
+        public PersonRepository(DbContext dbDbContext) 
             : base(dbDbContext) { }
     }
 }

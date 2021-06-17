@@ -4,5 +4,5 @@ using Dotnet6.EFCore6.Record.ValueObject.Repositories.Abstractions;
 
 namespace Dotnet6.EFCore6.Record.ValueObject.Repositories
 {
-    public interface IUserRepository : IRepository<Person, Guid> { }
+    public interface IPersonRepository : IRepository<Person, Guid> { }
 }

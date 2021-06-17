@@ -58,7 +58,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI
             services.ConfigureSqlServerRetryingOptions(
                 _configuration.GetSection(nameof(SqlServerRetryingOptions)));
             
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             services.AddSwaggerGen(options 

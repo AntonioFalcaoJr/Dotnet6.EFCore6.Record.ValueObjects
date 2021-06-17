@@ -2,7 +2,7 @@
 
 This project aims to demonstrate the configuration and use of **Records** as **Value Objects** with **EF Core 6**.
 
-#### Give a Star! :star:
+### Give a Star! :star:
 
 ---
 

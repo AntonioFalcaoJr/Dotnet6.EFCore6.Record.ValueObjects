@@ -2,6 +2,8 @@
 
 This project aims to demonstrate the configuration and use of **Records** as **Value Objects** with **EF Core 6**.
 
+### Give a Star! :star:
+
 ---
 
 ## Value Objects
@@ -109,7 +111,7 @@ public record Address : Abstractions.ValueObject
 ```
 ### Configuring 
 
-To solve the relationship required for the relation database, the identifier has to be defined as a **shadow property**.
+To solve the relationship required for the relational database, the identifier has to be defined as a **shadow property**.
 
 ```c#
 public class PersonConfiguration : IEntityTypeConfiguration<Person>

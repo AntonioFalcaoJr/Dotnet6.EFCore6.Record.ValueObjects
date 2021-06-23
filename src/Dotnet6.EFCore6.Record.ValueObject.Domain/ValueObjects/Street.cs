@@ -4,11 +4,11 @@
     {
         private Street() { }
 
-        public Street(City city, string name, int number) 
+        public Street(City city, string name, int number)
             => (City, Name, Number) = (city, name, number);
 
         public City City { get; private init; }
-        public string Name { get; private init;}
-        public int Number { get; private init;}
+        public string Name { get; }
+        public int Number { get; }
     }
 }

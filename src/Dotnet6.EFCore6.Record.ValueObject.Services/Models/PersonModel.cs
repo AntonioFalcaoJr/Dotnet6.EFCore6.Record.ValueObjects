@@ -1,4 +1,4 @@
-﻿namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Models
+﻿namespace Dotnet6.EFCore6.Record.ValueObject.Services.Models
 {
     public record PersonModel
     {

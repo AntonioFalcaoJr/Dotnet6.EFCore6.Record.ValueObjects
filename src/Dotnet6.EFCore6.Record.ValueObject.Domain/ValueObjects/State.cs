@@ -8,7 +8,7 @@
             => (Country, Initials, Name) = (country, initials, name);
 
         public Country Country { get; private init; }
-        public string Initials { get; private init; }
-        public string Name { get; private init; }
+        public string Initials { get; }
+        public string Name { get; }
     }
 }

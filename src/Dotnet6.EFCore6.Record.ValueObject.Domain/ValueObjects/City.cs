@@ -7,7 +7,7 @@
         public City(string name, State state)
             => (Name, State) = (name, state);
 
-        public string Name { get; private init; }
+        public string Name { get; }
         public State State { get; private init; }
     }
 }

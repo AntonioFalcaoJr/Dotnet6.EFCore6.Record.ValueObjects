@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Dotnet6.EFCore6.Record.ValueObject.Domain.Entities;
 using Dotnet6.EFCore6.Record.ValueObject.Domain.ValueObjects;
-using Dotnet6.EFCore6.Record.ValueObject.WebAPI.Models;
-using Dotnet6.EFCore6.Record.ValueObject.WebAPI.Models.Addresses;
+using Dotnet6.EFCore6.Record.ValueObject.Services.Models;
+using Dotnet6.EFCore6.Record.ValueObject.Services.Models.Addresses;
 
-namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.MappingProfiles
+namespace Dotnet6.EFCore6.Record.ValueObject.Services.MappingProfiles
 {
     public class ModelToDomainProfile : Profile
     {

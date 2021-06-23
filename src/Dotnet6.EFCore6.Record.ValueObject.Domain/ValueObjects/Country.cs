@@ -7,7 +7,7 @@
         public Country(string initials, string name)
             => (Initials, Name) = (initials, name);
 
-        public string Initials { get; private init; }
-        public string Name { get; private init; }
+        public string Initials { get; }
+        public string Name { get; }
     }
 }

@@ -59,12 +59,15 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI
             
             services.ConfigureSqlServerRetryingOptions(
                 _configuration.GetSection(nameof(SqlServerRetryingOptions)));
+
+            services.AddMemoryCache();
             
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            
+
             services.AddScoped<IPersonService, PersonService>();
             services.Decorate<IPersonService, PersonServiceLoggingDecorator>();
+            services.Decorate<IPersonService, PersonServiceCacheDecorator>();
             
             services.AddSwaggerGen(options 
                 => options.SwaggerDoc("v1", new OpenApiInfo

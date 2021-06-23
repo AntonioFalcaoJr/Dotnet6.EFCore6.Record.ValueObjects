@@ -30,7 +30,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Services
             if (person is null) 
                 throw new BusinessException("Person not found.");
 
-            var address = Mapper.Map<AddressModel, Address>(model);
+            var address = Mapper.Map<Address>(model);
             person.DefineAddress(address);
 
             await UnitOfWork.SaveChangesAsync(cancellationToken);

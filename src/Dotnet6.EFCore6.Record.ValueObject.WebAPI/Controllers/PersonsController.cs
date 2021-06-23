@@ -81,7 +81,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Address>> DefineAddress(Guid personId, [FromBody] AddressModel model, CancellationToken cancellationToken)
         {
-            var address = _mapper.Map<AddressModel, Address>(model);
+            var address = _mapper.Map<Address>(model);
 
             var person = await _repository.GetByIdAsync(
                 id: personId,

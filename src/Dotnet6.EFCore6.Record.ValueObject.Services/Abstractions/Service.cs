@@ -30,7 +30,6 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Services.Abstractions
 
         public virtual async Task<TEntity> EditAsync(TModel model, CancellationToken cancellationToken)
         {
-            if (model is null) return default;
             var entity = Mapper.Map<TEntity>(model);
             return await OnEditAsync(entity, cancellationToken);
         }
@@ -57,14 +56,12 @@ namespace Dotnet6.EFCore6.Record.ValueObject.Services.Abstractions
 
         protected async Task<TEntity> OnEditAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            if (entity is null) return default;
             await Repository.UpdateAsync(entity, cancellationToken);
             return await UnitOfWork.SaveChangesAsync(cancellationToken) ? entity : default;
         }
 
         protected async Task<TEntity> OnSaveAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            if (entity is null) return default;
             await Repository.AddAsync(entity, cancellationToken);
             return await UnitOfWork.SaveChangesAsync(cancellationToken) ? entity : default;
         }

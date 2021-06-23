@@ -8,7 +8,7 @@
             => (City, Name, Number) = (city, name, number);
 
         public City City { get; private init; }
-        public string Name { get; }
-        public int Number { get; }
+        public string Name { get; private init; }
+        public int Number { get; private init; }
     }
 }

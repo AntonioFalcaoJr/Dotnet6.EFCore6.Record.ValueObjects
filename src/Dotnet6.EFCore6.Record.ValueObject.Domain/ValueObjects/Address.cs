@@ -9,8 +9,7 @@
         public Address(Street street, string zipCode)
             => (Street, ZipCode) = (street, zipCode);
 
-        // Explicitly setter required for complex type by mapping engine.
         public Street Street { get; private init; }
-        public string ZipCode { get; }
+        public string ZipCode { get; private init; }
     }
 }

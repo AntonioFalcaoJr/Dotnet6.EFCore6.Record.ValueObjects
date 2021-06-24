@@ -1,4 +1,4 @@
-﻿namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Models.Addresses
+﻿namespace Dotnet6.EFCore6.Record.ValueObject.Services.Models.Addresses
 {
     public record AddressModel
     {

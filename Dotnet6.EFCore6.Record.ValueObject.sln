@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet6.EFCore6.Record.Valu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet6.EFCore6.Record.ValueObject.WebAPI", "src\Dotnet6.EFCore6.Record.ValueObject.WebAPI\Dotnet6.EFCore6.Record.ValueObject.WebAPI.csproj", "{6E6ABA18-7C4E-415E-BFE5-8C51A68916F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotnet6.EFCore6.Record.ValueObject.Services", "src\Dotnet6.EFCore6.Record.ValueObject.Services\Dotnet6.EFCore6.Record.ValueObject.Services.csproj", "{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,10 +62,23 @@ Global
 		{6E6ABA18-7C4E-415E-BFE5-8C51A68916F4}.Release|x64.Build.0 = Release|Any CPU
 		{6E6ABA18-7C4E-415E-BFE5-8C51A68916F4}.Release|x86.ActiveCfg = Release|Any CPU
 		{6E6ABA18-7C4E-415E-BFE5-8C51A68916F4}.Release|x86.Build.0 = Release|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Debug|x64.Build.0 = Debug|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Debug|x86.Build.0 = Debug|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Release|x64.ActiveCfg = Release|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Release|x64.Build.0 = Release|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Release|x86.ActiveCfg = Release|Any CPU
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1B8D2E1A-C32F-4A03-8820-EC8372855E4A} = {16ABD8D6-4284-4B48-8409-11A22C186BDC}
 		{3A871E44-83B5-4BB2-B006-6EB22B3A08AC} = {16ABD8D6-4284-4B48-8409-11A22C186BDC}
 		{6E6ABA18-7C4E-415E-BFE5-8C51A68916F4} = {16ABD8D6-4284-4B48-8409-11A22C186BDC}
+		{369FAE9B-0D42-4CED-A7F0-F617C3B54B2C} = {16ABD8D6-4284-4B48-8409-11A22C186BDC}
 	EndGlobalSection
 EndGlobal

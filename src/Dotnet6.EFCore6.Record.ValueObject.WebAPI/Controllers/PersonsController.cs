@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Dotnet6.EFCore6.Record.ValueObject.Domain.Entities;
-using Dotnet6.EFCore6.Record.ValueObject.Domain.ValueObjects;
-using Dotnet6.EFCore6.Record.ValueObject.Repositories;
-using Dotnet6.EFCore6.Record.ValueObject.Repositories.UnitsOfWork;
-using Dotnet6.EFCore6.Record.ValueObject.WebAPI.Models;
-using Dotnet6.EFCore6.Record.ValueObject.WebAPI.Models.Addresses;
+using Dotnet6.EFCore6.Record.ValueObject.Services;
+using Dotnet6.EFCore6.Record.ValueObject.Services.Models;
+using Dotnet6.EFCore6.Record.ValueObject.Services.Models.Addresses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,19 +17,19 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Controllers
     [Route("api/v{version:apiVersion}/[controller]")]
     public class PersonsController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        private readonly IPersonRepository _repository;
+        private readonly IPersonService _service;
 
-        public PersonsController(IPersonRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
-            => (_repository, _unitOfWork, _mapper) = (repository, unitOfWork, mapper);
+        public PersonsController(IPersonService service)
+        {
+            _service = service;
+        }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Person>))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult<IEnumerable<Person>>> GetAllAsync(CancellationToken cancellationToken)
         {
-            var allPersons = await _repository.GetAllAsync(
+            var allPersons = await _service.GetAllAsync(
                 include: persons => persons.Include(person => person.Address),
                 cancellationToken: cancellationToken);
 
@@ -48,7 +45,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Controllers
         {
             if (id == default) return BadRequest("Invalid identifier.");
 
-            var person = await _repository.GetByIdAsync(
+            var person = await _service.GetByIdAsync(
                 id: id,
                 include: persons => persons.Include(entity => entity.Address),
                 cancellationToken: cancellationToken);
@@ -62,9 +59,7 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Person>> PostAsync([FromBody] PersonModel model, CancellationToken cancellationToken)
         {
-            var person = _mapper.Map<Person>(model);
-            await _repository.AddAsync(person, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            var person = await _service.SaveAsync(model, cancellationToken);
 
             return CreatedAtAction(
                 actionName: nameof(GetByIdAsync),
@@ -79,22 +74,10 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI.Controllers
         [HttpPut("define-address/{personId:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Person))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Address>> DefineAddress(Guid personId, [FromBody] AddressModel model, CancellationToken cancellationToken)
+        public async Task<ActionResult<AddressModel>> DefineAddressAsync(Guid personId, [FromBody] AddressModel model, CancellationToken cancellationToken)
         {
-            var address = _mapper.Map<Address>(model);
-
-            var person = await _repository.GetByIdAsync(
-                id: personId,
-                include: persons => persons.Include(entity => entity.Address),
-                cancellationToken: cancellationToken,
-                asTracking: true);
-
-            if (person is null) return NotFound();
-
-            person.DefineAddress(address);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-
-            return Ok(address);
+            await _service.DefineAddressAsync(personId, model, cancellationToken);
+            return Ok(model);
         }
     }
 }

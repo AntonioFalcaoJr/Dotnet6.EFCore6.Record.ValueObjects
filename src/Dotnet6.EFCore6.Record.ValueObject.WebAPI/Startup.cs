@@ -3,7 +3,9 @@ using Dotnet6.EFCore6.Record.ValueObject.Repositories;
 using Dotnet6.EFCore6.Record.ValueObject.Repositories.DependencyInjection.Extensions;
 using Dotnet6.EFCore6.Record.ValueObject.Repositories.DependencyInjection.Options;
 using Dotnet6.EFCore6.Record.ValueObject.Repositories.UnitsOfWork;
-using Dotnet6.EFCore6.Record.ValueObject.WebAPI.MappingProfiles;
+using Dotnet6.EFCore6.Record.ValueObject.Services;
+using Dotnet6.EFCore6.Record.ValueObject.Services.Decorators;
+using Dotnet6.EFCore6.Record.ValueObject.Services.MappingProfiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -57,9 +59,15 @@ namespace Dotnet6.EFCore6.Record.ValueObject.WebAPI
             
             services.ConfigureSqlServerRetryingOptions(
                 _configuration.GetSection(nameof(SqlServerRetryingOptions)));
+
+            services.AddMemoryCache();
             
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IPersonService, PersonService>();
+            services.Decorate<IPersonService, PersonServiceLoggingDecorator>();
+            services.Decorate<IPersonService, PersonServiceCacheDecorator>();
             
             services.AddSwaggerGen(options 
                 => options.SwaggerDoc("v1", new OpenApiInfo
